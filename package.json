@@ -1,0 +1,40 @@
+{
+  "name": "my-opencode-plugin",
+  "version": "0.1.0",
+  "description": "Template for an opencode v2 plugin with server, TUI, GUI and RPC parts.",
+  "license": "MIT",
+  "type": "module",
+  "exports": {
+    ".": "./src/server/server.ts",
+    "./server": "./src/server/server.ts",
+    "./tui": "./src/tui/tui.tsx",
+    "./gui-experimental": "./dist/gui-experimental.cjs",
+    "./rpc": "./src/rpc/rpc.ts"
+  },
+  "files": [
+    "src",
+    "dist",
+    "agents",
+    "skills",
+    "references",
+    "mcp",
+    "README.md",
+    "LICENSE"
+  ],
+  "scripts": {
+    "typecheck": "tsc --noEmit",
+    "build": "vite build",
+    "build:watch": "vite build --watch",
+    "test": "bun test"
+  },
+  "dependencies": {
+    "@opencode/plugin": "2.2.6"
+  },
+  "devDependencies": {
+    "@types/bun": "1.4.4",
+    "solid-js": "1.9.18",
+    "typescript": "7.0.2",
+    "vite": "8.3.7",
+    "vite-plugin-solid": "2.11.15"
+  }
+}

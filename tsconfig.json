@@ -1,0 +1,19 @@
+{
+  // Typecheck only (`bun run typecheck`): opencode runs the .ts/.tsx sources
+  // directly, and Vite builds the GUI bundle.
+  "compilerOptions": {
+    "target": "ES2022",
+    "module": "ESNext",
+    "moduleResolution": "Bundler",
+    "strict": true,
+    "noEmit": true,
+    "skipLibCheck": true,
+    "isolatedModules": true,
+    "types": ["bun"],
+    // GUI JSX is Solid. TUI files that use JSX override this per file with
+    // a `/** @jsxImportSource @opentui/solid */` pragma (see src/tui/tui.tsx).
+    "jsx": "preserve",
+    "jsxImportSource": "solid-js"
+  },
+  "include": ["src", "tests", "vite.config.ts"]
+}
