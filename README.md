@@ -85,6 +85,10 @@ made from this template.
 
 ## opencode V1 support
 
+V1 support is included as an example. Target V2 first: build features on
+the V2 API, and add V1 hooks only where they extend compatibility to
+opencode 1.x users. Nothing in V1 should drive the design.
+
 The server entry also works on opencode 1.x (1.18.29 or later). Its default
 export is one object with both entry points:
 
