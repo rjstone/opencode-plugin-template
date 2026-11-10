@@ -6,7 +6,7 @@
 // ({ type: "local", path }) or a Git repository
 // ({ type: "git", repository: "owner/repo", branch? }).
 import { Reference } from "@opencode/plugin"
-import { REFERENCES_DIR } from "../shared/paths.js"
+import { referenceDir } from "../shared/paths.js"
 import type { ReferenceEditor } from "./types.js"
 
 // Typed with the schema (Reference.Source), not the editor's parameter type:
@@ -15,11 +15,11 @@ import type { ReferenceEditor } from "./types.js"
 // Whether the server keeps them for plugin-added references is unverified.
 const REFERENCES: readonly { readonly name: string; readonly source: Reference.Source }[] = [
   {
-    name: "special",
+    name: "example",
     source: {
       type: "local",
-      path: Reference.LocalSource.fields.path.make(REFERENCES_DIR), // absolute; holds special-prompt.md
-      description: "Example from the plugin template: attach for the special prompt",
+      path: Reference.LocalSource.fields.path.make(referenceDir("example-docs")), // absolute
+      description: "Example docs from the plugin template (chapter1.md)",
       // hidden: true, // keep it out of client pickers (still in the API and instructions)
     },
   },

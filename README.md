@@ -16,7 +16,7 @@ extend as commented-out code. Uncomment what you need and delete the rest.
    - the example agent (`agents/example.md`) and skill
      (`skills/example/`), plus their ids in `src/server/agents.ts` and
      `src/server/skills.ts`
-   - the `special` reference (`references/`, registered in
+   - the `example` reference (`references/example-docs/`, registered in
      `src/server/references.ts`)
 3. Install and check:
 
@@ -58,7 +58,7 @@ What the examples do once loaded:
 
 | Part | Example | Try it |
 | --- | --- | --- |
-| Server | `example` agent, `example` skill, `hello` tool, `special` reference, `hello-mcp` MCP server, RPC handler | pick the agent; ask for the example skill, the hello tool or the MCP hello tool; attach `special` and ask anything |
+| Server | `example` agent, `example` skill, `hello` tool, `example` reference, `hello-mcp` MCP server, RPC handler | pick the agent; ask for the example skill, the hello tool or the MCP hello tool; attach the `example` reference and ask about chapter 1 |
 | TUI | palette + `/plugin-ping` command | shows the server's RPC answer as a toast |
 | GUI | "Ping the plugin's server part" palette command | shows the answer in a dialog |
 | RPC | `ping` method | called by the TUI and GUI examples |
@@ -70,7 +70,7 @@ package.json        exports: one key per part (".", "./server", "./tui", "./gui-
 vite.config.ts      GUI build (the only part that needs one)
 agents/             one agent per .md file (frontmatter + system prompt)
 skills/             one skill per folder (SKILL.md)
-references/         directory registered as the "special" reference (attach it by alias)
+references/         one directory per reference (example-docs/ is the "example" reference; attach it by alias)
 mcp/                MCP servers the plugin ships (hello_mcp.js: stdio, no dependencies)
 src/server/         server part: server.ts wires one file per domain
 src/tui/            TUI part: tui.tsx wires one file per area

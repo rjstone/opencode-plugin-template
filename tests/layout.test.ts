@@ -3,7 +3,7 @@
 import { describe, expect, test } from "bun:test"
 import { existsSync, readFileSync } from "node:fs"
 import { join } from "node:path"
-import { PACKAGE_ROOT, REFERENCES_DIR, agentFile, mcpFile, skillFile } from "../src/shared/paths.js"
+import { PACKAGE_ROOT, agentFile, mcpFile, referenceDir, skillFile } from "../src/shared/paths.js"
 
 const pkg = JSON.parse(readFileSync(join(PACKAGE_ROOT, "package.json"), "utf8")) as {
   exports: Record<string, string>
@@ -53,8 +53,8 @@ describe("shipped files", () => {
     for (const id of ids) expect(existsSync(skillFile(id))).toBe(true)
   })
 
-  test("the special reference's directory holds special-prompt.md", () => {
-    expect(existsSync(join(REFERENCES_DIR, "special-prompt.md"))).toBe(true)
+  test("the example reference's directory holds chapter1.md", () => {
+    expect(existsSync(join(referenceDir("example-docs"), "chapter1.md"))).toBe(true)
   })
 
   test("the MCP server the plugin registers exists", () => {

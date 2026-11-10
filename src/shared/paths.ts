@@ -13,8 +13,10 @@ export const AGENTS_DIR = join(PACKAGE_ROOT, "agents")
 /** skills/<id>/SKILL.md: one skill per folder. */
 export const SKILLS_DIR = join(PACKAGE_ROOT, "skills")
 
-/** references/: the directory the "special" reference points at. */
+/** references/<dir>/: one directory per reference (registered in src/server/references.ts). */
 export const REFERENCES_DIR = join(PACKAGE_ROOT, "references")
+
+export const referenceDir = (dir: string): string => join(REFERENCES_DIR, dir)
 
 /** mcp/: MCP servers the plugin ships (registered in src/server/mcp.ts). */
 export const MCP_DIR = join(PACKAGE_ROOT, "mcp")

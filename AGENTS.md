@@ -62,7 +62,8 @@ unless asked: they are the map of what the plugin could extend.
 Agents (`agents/<id>.md`) and skills (`skills/<id>/SKILL.md`) are files, read
 once in `setup()` before anything registers; list each id in `AGENT_IDS` /
 `SKILL_IDS`. A reference (`src/server/references.ts`) is a named
-directory, not a file: `references/` is registered as `special`. MCP
+directory, not a file: each folder under `references/` is one reference
+(`references/example-docs/` is registered as `example`). MCP
 servers the plugin ships live in `mcp/` (`src/server/mcp.ts` registers
 them); an optional piece like this one skips only its own registration when
 it can't start, and logs why.
