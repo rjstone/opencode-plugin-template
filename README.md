@@ -83,6 +83,21 @@ tests/              bun test
 `AGENTS.md` describes the conventions for coding agents working in a plugin
 made from this template.
 
+## opencode V1 support
+
+The server entry also works on opencode 1.x (1.18.29 or later). Its default
+export is one object with both entry points:
+
+- `setup()` (from `Plugin.define`): what V2 runs.
+- `server()` (`src/server/v1.ts`): what V1 runs. It returns V1 hooks; the
+  example's `config` hook adds the same agent and MCP server, reusing the
+  loaders the V2 code calls.
+
+V1 loads the plugin with `"plugin"` (singular) in `opencode.json`:
+`{ "plugin": ["file://<path-to-this-checkout>"] }`. Targeting V2 only?
+Delete `v1.ts`, its import and the `server: v1Server` line, and export
+`Plugin.define(...)` directly.
+
 ## Before you add JSX
 
 - **TUI** (OpenTUI + Solid): add `@opentui/core`, `@opentui/solid` and

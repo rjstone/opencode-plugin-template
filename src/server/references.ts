@@ -12,7 +12,8 @@ import type { ReferenceEditor } from "./types.js"
 // Typed with the schema (Reference.Source), not the editor's parameter type:
 // in 2.2.6 the editor takes the generated client type, which lacks the
 // `description` and `hidden` fields the schema and the config docs have.
-// Whether the server keeps them for plugin-added references is unverified.
+// The server keeps them: GET /api/reference lists this one with its
+// description (checked on opencode 2.2.6).
 const REFERENCES: readonly { readonly name: string; readonly source: Reference.Source }[] = [
   {
     name: "example",

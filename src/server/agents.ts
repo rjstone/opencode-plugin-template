@@ -29,9 +29,16 @@ function loadAgent(id: string) {
   }
 }
 
+export type AgentDef = ReturnType<typeof loadAgent>
+
+/** Reads every agent file (throws on a missing one). Shared by V2 (below) and V1 (v1.ts). */
+export function loadAgents(): AgentDef[] {
+  return AGENT_IDS.map(loadAgent)
+}
+
 /** Reads every agent file now (a missing file fails setup), then returns the transform. */
 export function agentsEditor() {
-  const agents = AGENT_IDS.map(loadAgent)
+  const agents = loadAgents()
   return (editor: AgentEditor) => {
     // AgentEditor has no add(): update() creates the agent when the id is
     // new, so set every field.

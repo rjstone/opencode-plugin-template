@@ -38,6 +38,16 @@ both `input` and `output`, and a contract needs `events`, even when empty.
 - GUI: import only modules the desktop app provides (docs "Shared
   modules"). `dist/` is gitignored; `bun run build` makes it.
 
+## V1 support
+
+The server entry's default export is `{ ...Plugin.define({ id, setup }),
+server: v1Server }`. V2 reads only `id` and `setup()`; opencode 1.x (1.18.29+)
+calls only `server()` (`src/server/v1.ts`) and uses the hooks it returns.
+Keep each side on its own API: share loaders (`loadAgents`, `mcpServer`),
+never translate hooks. When a V2 domain gains a V1 equivalent, give its file
+a plain loader that both sides call. V1 types in `v1.ts` are local
+stand-ins; the real ones are in `@opencode-ai/plugin` 1.x.
+
 ## One domain per file
 
 Each part's entry is wiring only. A domain (server), area (TUI) or registry
